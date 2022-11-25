@@ -3,6 +3,7 @@ import './App.css';
 import {useEffect, useState} from 'react';
 // import MovieCard from './components/MovieCard';
 import Login from './components/Login';
+import Register from './components/Register';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -11,6 +12,7 @@ function App() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [movies, setMovies] = useState([]);
+  const [register, setRegister] = useState(false);
 
   const [user, setUser] = useState();
 
@@ -19,6 +21,14 @@ const searchMovies = async (title) => {
   const data = await response.json();
   setMovies(data.Search);
   // console.log(data);
+}
+
+const handleRegisterBtn = () => {
+  if (register) {
+    setRegister(false);
+  } else {
+    setRegister(true);
+  }
 }
 
 useEffect(() => {
@@ -34,6 +44,13 @@ useEffect(() => {
       <h1>Welcome {user}</h1> 
       : 
       <h1>Please Login</h1>}
+      <button onClick={() => {handleRegisterBtn()}}>Register</button>
+      {register ? <Register setter={setUser}/>
+       : 
+       null
+       }
+      
+      {/* <Register setter={setUser}/> */}
       {/* conditional renders when logged in */}
         {/* if specific user return all users from database and display in table */}
         {/* if specific user allow creation of records and deletion of records  */}
