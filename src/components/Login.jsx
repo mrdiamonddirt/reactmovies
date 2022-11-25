@@ -1,22 +1,19 @@
 import React from "react";
 // import { connect } from 'react-redux';
 import { useState } from "react";
+import {loginUser} from '../utils'
 
 const Login = ({ setter }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-    const submitHandler = async (e) => {
+    const submitHandler = async (e) => { //e is the event
         e.preventDefault();
         console.log(username)
         console.log(email)
         console.log(password)
-        // const user = {
-        //     username,
-        //     email,
-        //     password
-        // }
+        await loginUser(username, email, password, setter)
     }
 
   return (

@@ -10,7 +10,9 @@ const API_URL = process.env.REACT_APP_API_URL;
 function App() {
 
   const [searchTerm, setSearchTerm] = useState('');
-const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+
+  const [user, setUser] = useState();
 
 const searchMovies = async (title) => {
   const response = await fetch(`${API_URL}&s=${title}`);
@@ -27,9 +29,11 @@ useEffect(() => {
 
   return (
     <div className="App">
-<Login />
-
-
+      <Login setter={setUser}/>
+      {user ? 
+      <h1>Welcome {user}</h1> 
+      : 
+      <h1>Please Login</h1>}
       {/* <h1>My Movies App</h1>
 
       <div>
