@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import {useEffect, useState} from 'react';
-import MovieCard from './components/MovieCard';
+// import MovieCard from './components/MovieCard';
+import Login from './components/Login';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -19,13 +20,17 @@ const searchMovies = async (title) => {
 }
 
 useEffect(() => {
-  searchMovies("Batman");
+
+  // searchMovies("Batman");
 }, []);
 
 
   return (
     <div className="App">
-      <h1>My Movies App</h1>
+<Login />
+
+
+      {/* <h1>My Movies App</h1>
 
       <div>
         <input type="text" placeholder="Search for a movie" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
@@ -46,7 +51,7 @@ useEffect(() => {
 
 
 
-      </div>
+      </div> */}
     </div>
   );
 }
