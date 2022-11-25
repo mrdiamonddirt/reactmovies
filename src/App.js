@@ -3,7 +3,7 @@ import './App.css';
 import {useEffect, useState} from 'react';
 import MovieCard from './components/MovieCard';
 
-const API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=93a52616'
+const API_URL = process.env.REACT_APP_API_URL;
 
 
 function App() {
