@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {useEffect, useState} from 'react';
+import MovieCard from './components/MovieCard';
 
 const API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=93a52616'
 
@@ -13,7 +14,8 @@ const [movies, setMovies] = useState([]);
 const searchMovies = async (title) => {
   const response = await fetch(`${API_URL}&s=${title}`);
   const data = await response.json();
-  console.log(data);
+  setMovies(data.Search);
+  // console.log(data);
 }
 
 useEffect(() => {
@@ -23,7 +25,28 @@ useEffect(() => {
 
   return (
     <div className="App">
-      
+      <h1>My Movies App</h1>
+
+      <div>
+        <input type="text" placeholder="Search for a movie" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+        <button type="button" onClick={() => searchMovies(searchTerm)}>Search</button>
+      </div>
+
+      <div className="movies">
+      { movies?.length > 0
+          ? (
+          <div className='container'>
+            {movies.map((movie) => (
+              <MovieCard key={movie.imdbID} movie={movie} />
+        ))}
+        </div>
+        ) : (
+          <h2>No movies found</h2>
+        )}
+
+
+
+      </div>
     </div>
   );
 }
