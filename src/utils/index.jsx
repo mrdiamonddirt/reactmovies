@@ -15,10 +15,15 @@ export const loginUser = async (name, email, password, setter) => {
 
         const data = await response.json();
         console.log(data)
-        setter(data.username)
+        setter(data.name)
 
     } catch (error) {
         console.log(error)
         
     }
+
+    // create crud functions for users
+    // add a new user to the database function
+    // add a delete own user function
+
     }

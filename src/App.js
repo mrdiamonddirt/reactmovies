@@ -34,6 +34,16 @@ useEffect(() => {
       <h1>Welcome {user}</h1> 
       : 
       <h1>Please Login</h1>}
+      {/* conditional renders when logged in */}
+        {/* if specific user return all users from database and display in table */}
+        {/* if specific user allow creation of records and deletion of records  */}
+
+        {/* create change password conditional render with 2 inputs to compare the 2 passwords  */}
+
+        {/* create delete own user button that deletes does another password check and deletes user */}
+
+        {/* create a button to add a movie to the database */}
+
       {/* <h1>My Movies App</h1>
 
       <div>
