@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 // import MovieCard from './components/MovieCard';
 import Login from './components/Login';
 import Register from './components/Register';
+import AllUsers from './components/AllUsers';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -15,6 +16,7 @@ function App() {
   const [register, setRegister] = useState(false);
 
   const [user, setUser] = useState();
+  const [users, setUsers] = useState([]);
 
 const searchMovies = async (title) => {
   const response = await fetch(`${API_URL}&s=${title}`);
@@ -49,7 +51,8 @@ useEffect(() => {
        : 
        null
        }
-      
+      <AllUsers setter={setUsers}/>
+      {/* <button onClick={() => {console.log(users)}}>Show Users</button> */}
       {/* <Register setter={setUser}/> */}
       {/* conditional renders when logged in */}
         {/* if specific user return all users from database and display in table */}
