@@ -4,14 +4,13 @@ import {getAllUsers} from '../utils'
 
 const AllUsers = ({ setter }) => {
     
-    const [users, setUsers] = useState([]); // this is the state of the users
+    // const [users, setUsers] = useState([]); // this is the state of the users
     
         const submitHandler = async (e) => { //e is the event
             e.preventDefault();
             console.log("submitting")
-            console.log(users)
             // console.log(email)
-            await getAllUsers(users, setter)
+            await getAllUsers(setter)
         }
     return (
        <>

@@ -16,8 +16,9 @@ function App() {
   const [register, setRegister] = useState(false);
 
   const [user, setUser] = useState();
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState();
 
+  console.log('users is:', users);
 const searchMovies = async (title) => {
   const response = await fetch(`${API_URL}&s=${title}`);
   const data = await response.json();
@@ -51,11 +52,21 @@ useEffect(() => {
        : 
        null
        }
-      <AllUsers setter={users}/>
+      <AllUsers setter={setUsers}/>
+      {
+      }
       {users ?
-      <h1>users
-      </h1> :
-      <h1>No Users</h1>}
+      Object.keys(users).map((key) => {
+        console.log('users keys:', users[key]);
+        return (
+        <>
+        <h1 key={users[key]}>{users[key].name}</h1>
+        </>
+        )
+      })
+      :
+      <p>No Users</p>
+      }
       {/* conditional renders when logged in */}
         {/* if specific user return all users from database and display in table */}
         {/* if specific user allow creation of records and deletion of records  */}
