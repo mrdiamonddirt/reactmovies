@@ -1,6 +1,6 @@
 export const loginUser = async (name, email, password, setter) => {
     try {
-        const response = await fetch("http://localhost:3000/loginUser", {
+        const response = await fetch("http://localhost:5001/loginUser", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const loginUser = async (name, email, password, setter) => {
 // add a new user to the database function
 export const registerUser = async (name, email, password, setter) => {
     try {
-        const response = await fetch("http://localhost:3000/addUser", {
+        const response = await fetch("http://localhost:5001/addUser", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -52,11 +52,11 @@ export const registerUser = async (name, email, password, setter) => {
 // get all users from the database
 export const getAllUsers = async (setter) => {
     try {
-        const response = await fetch("http://localhost:3000/getAllUsers", {
+        const response = await fetch("http://localhost:5001/getUsers", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            },
+            }
         })
         const data = await response.json();
         console.log(data)

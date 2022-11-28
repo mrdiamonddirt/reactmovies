@@ -51,9 +51,11 @@ useEffect(() => {
        : 
        null
        }
-      <AllUsers setter={setUsers}/>
-      {/* <button onClick={() => {console.log(users)}}>Show Users</button> */}
-      {/* <Register setter={setUser}/> */}
+      <AllUsers setter={users}/>
+      {users ?
+      <h1>users
+      </h1> :
+      <h1>No Users</h1>}
       {/* conditional renders when logged in */}
         {/* if specific user return all users from database and display in table */}
         {/* if specific user allow creation of records and deletion of records  */}
