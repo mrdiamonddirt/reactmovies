@@ -14,9 +14,9 @@ export function writeCookie (key, value, days) {
   return cookie;
 }
 
-export function readCookie (cookiename) {
-    const name = cookiename + '='
-    const decodedCookie = decodeURIComponent(document.cookie);
+export function getCookie (cookieName) {
+    let name = cookieName + '='
+    let decodedCookie = decodeURIComponent(document.cookie);
     console.log(decodedCookie)
     const cookieArray = decodedCookie.split(';');
     for (let i = 0; i < cookieArray.length; i++) {

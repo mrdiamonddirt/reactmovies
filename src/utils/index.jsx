@@ -1,3 +1,5 @@
+import { writeCookie } from "../common";
+
 export const loginUser = async (name, email, password, setter) => {
     try {
         const response = await fetch("http://localhost:5001/loginUser", {
@@ -16,6 +18,7 @@ export const loginUser = async (name, email, password, setter) => {
         const data = await response.json();
         console.log(data)
         setter(data.name)
+        writeCookie("jwt_token", data.token, 7)
 
     } catch (error) {
         console.log(error)
@@ -26,6 +29,25 @@ export const loginUser = async (name, email, password, setter) => {
     
     // add a delete own user function
 
+    }
+
+    export const findUser = async (cookie) => {
+        try {
+            const response = await fetch("http://localhost:5001/findUser", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${cookie}`
+                    },
+            });
+    
+            const data = await response.json();
+            console.log(data)
+            return (data.username)
+        } catch (error) {
+            console.log(error)
+            
+        }
     }
 // add a new user to the database function
 export const registerUser = async (name, email, password, setter) => {
@@ -60,7 +82,7 @@ export const getAllUsers = async (setter) => {
         })
         const data = await response.json();
         console.log(data)
-        setter(data)
+        setter(data.data.users)
 
     } catch (error) {
         console.log(error)

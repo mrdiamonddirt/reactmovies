@@ -5,6 +5,9 @@ import {useEffect, useState} from 'react';
 import Login from './components/Login';
 import Register from './components/Register';
 import AllUsers from './components/AllUsers';
+import { writeCookie } from './common';
+import { getCookie } from './common';
+import { findUser } from './utils';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -35,9 +38,18 @@ const handleRegisterBtn = () => {
 }
 
 useEffect(() => {
-
+  let cookie = getCookie('jwt_woken');
+  if (cookie !== false) {
+    loginWithToken(cookie);
+  }
   // searchMovies("Batman");
 }, []);
+
+const loginWithToken = async (cookie) => {
+ const user = await findUser(cookie);
+  setUser(user);
+}
+
 
 
   return (
@@ -52,22 +64,10 @@ useEffect(() => {
        : 
        null
        }
-      <AllUsers setter={setUsers}/>
-      {
-      }
-      {users ?
-      Object.keys(users).map((key) => {
-        console.log('users keys:', users[key]);
-        return (
-        <>
-        <h1 key={users[key]}>{users[key].name}</h1>
-        </>
-        )
-      })
-      :
-      <p>No Users</p>
-      }
-      {/* conditional renders when logged in */}
+      <AllUsers setter={setUsers} />
+
+
+        {/* conditional renders when logged in */}
         {/* if specific user return all users from database and display in table */}
         {/* if specific user allow creation of records and deletion of records  */}
 
