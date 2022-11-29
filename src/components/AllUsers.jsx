@@ -35,7 +35,7 @@ const AllUsers = ({ setter }) => {
                 )
             })
             :
-            null
+            <h3> No Users </h3>
 
         }    
         </div>         
