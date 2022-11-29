@@ -88,3 +88,25 @@ export const getAllUsers = async (setter) => {
         console.log(error)
     }
 }
+
+export default UpdateUser = async (user, key, value) => {
+    try {
+        const response = await fetch("http://localhost:5001/updateUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "user": user,
+                    "key": key,
+                    "value": value
+                }),
+        })
+        const data = await response.json();
+        console.log(data)
+        return (data)
+    } catch (error) {
+        console.log(error)
+        
+    }
+};

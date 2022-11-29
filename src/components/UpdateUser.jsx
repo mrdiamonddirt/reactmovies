@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import {updateUser} from '../utils'
 
-const Updateuser = ({ user }) => {
-    const [name, setName] = useState(user.name);
-    const [email, setEmail] = useState(user.email);
-    const [password, setPassword] = useState(user.password);
+const UpdateUser = ({ user }) => {
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
 
     // const submitHandler = async (e) => {
     //     e.preventDefault();
@@ -56,4 +56,4 @@ const Updateuser = ({ user }) => {
 
 }
 
-export default Updateuser;
+export default UpdateUser;

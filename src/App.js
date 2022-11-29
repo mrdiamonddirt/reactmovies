@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react';
 import Login from './components/Login';
 import Register from './components/Register';
 import AllUsers from './components/AllUsers';
+import UpdateUser from './components/UpdateUser';
 import { writeCookie } from './common';
 import { getCookie } from './common';
 import { findUser } from './utils';
@@ -55,8 +56,11 @@ const loginWithToken = async (cookie) => {
   return (
     <div className="App">
       <Login setter={setUser}/>
-      {user ? 
+      {user ?
+      <> 
       <h1>Welcome {user}</h1> 
+      <UpdateUser user={user}/>
+      </>
       : 
       <h1>Please Login</h1>}
       <button onClick={() => {handleRegisterBtn()}}>Register</button>
