@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import {updateUser} from '../utils'
+import {Updateuser, deleteuser } from '../utils'
 
 const UpdateUser = ({ user }) => {
     const [name, setName] = useState();
@@ -18,19 +18,20 @@ const UpdateUser = ({ user }) => {
     const updateUserName = async (e) => {
         e.preventDefault();
         console.log("submitting")
-        await updateUser(user , 'name', name) 
+        await Updateuser(user , 'name', name)
+        console.log(user) 
     }
 
     const updateUserEmail = async (e) => {
         e.preventDefault();
         console.log("submitting")
-        await updateUser(user , 'email', email)
+        await Updateuser(user , 'email', email)
     }
 
     const updateUserPassword = async (e) => {
         e.preventDefault();
         console.log("submitting")
-        await updateUser(user , 'password', password)
+        await Updateuser(user , 'password', password)
     }
 
     return (

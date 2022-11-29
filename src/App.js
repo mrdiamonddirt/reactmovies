@@ -4,8 +4,9 @@ import {useEffect, useState} from 'react';
 // import MovieCard from './components/MovieCard';
 import Login from './components/Login';
 import Register from './components/Register';
-import AllUsers from './components/AllUsers';
+import DeleteUser from './components/DeleteUser';
 import UpdateUser from './components/UpdateUser';
+import AllUsers from './components/AllUsers';
 import { writeCookie } from './common';
 import { getCookie } from './common';
 import { findUser } from './utils';
@@ -60,6 +61,7 @@ const loginWithToken = async (cookie) => {
       <> 
       <h1>Welcome {user}</h1> 
       <UpdateUser user={user}/>
+      <DeleteUser user={user}/>
       </>
       : 
       <h1>Please Login</h1>}

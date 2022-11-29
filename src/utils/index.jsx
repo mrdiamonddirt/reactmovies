@@ -89,10 +89,10 @@ export const getAllUsers = async (setter) => {
     }
 }
 
-export default UpdateUser = async (user, key, value) => {
+export const Updateuser = async (user, key, value) => {
     try {
         const response = await fetch("http://localhost:5001/updateUser", {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 },
@@ -110,3 +110,23 @@ export default UpdateUser = async (user, key, value) => {
         
     }
 };
+
+export const deleteUser = async (user) => {
+    try {
+        const response = await fetch("http://localhost:5001/deleteUser", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "user": user,
+                }),
+        })
+        const data = await response.json();
+        console.log(data)
+        return (data)
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
