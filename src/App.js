@@ -20,6 +20,7 @@ function App() {
   const [register, setRegister] = useState(false);
   const [updatingUser, setUpdatingUser] = useState(false);
   const [gettingAllUsers, setGettingAllUsers] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false);
 
   const [user, setUser] = useState();
   const [users, setUsers] = useState();
@@ -45,6 +46,14 @@ function App() {
       setUpdatingUser(false);
     } else {
       setUpdatingUser(true);
+    }
+  };
+
+  const handleLoggingInBtn = () => {
+    if (loggingIn) {
+      setLoggingIn(false);
+    } else {
+      setLoggingIn(true);
     }
   };
 
@@ -81,7 +90,8 @@ function App() {
       ) : (
         <>
           <h1>Please Login</h1>
-          <Login setter={setUser} />
+          <button onClick={handleLoggingInBtn}>Login</button>
+          {loggingIn ? <Login setter={setUser} /> : null}
         </>
       )}
       <button
