@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import DeleteUser from "./components/DeleteUser";
 import UpdateUser from "./components/UpdateUser";
+import MovieCard from "./components/MovieCard";
 import AllUsers from "./components/AllUsers";
 import { writeCookie } from "./common";
 import { getCookie } from "./common";
@@ -52,7 +53,6 @@ function App() {
 
   return (
     <div className="App">
-      <Login setter={setUser} />
       {user ? (
         <>
           <h1>Welcome {user}</h1>
@@ -60,7 +60,10 @@ function App() {
           <DeleteUser user={user} />
         </>
       ) : (
-        <h1>Please Login</h1>
+        <>
+          <h1>Please Login</h1>
+          <Login setter={setUser} />
+        </>
       )}
       <button
         onClick={() => {
@@ -82,28 +85,31 @@ function App() {
 
       {/* create a button to add a movie to the database */}
 
-      {/* <h1>My Movies App</h1>
+      <h1>My Movies App</h1>
 
       <div>
-        <input type="text" placeholder="Search for a movie" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        <button type="button" onClick={() => searchMovies(searchTerm)}>Search</button>
+        <input
+          type="text"
+          placeholder="Search for a movie"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button type="button" onClick={() => searchMovies(searchTerm)}>
+          Search
+        </button>
       </div>
 
       <div className="movies">
-      { movies?.length > 0
-          ? (
-          <div className='container'>
+        {movies?.length > 0 ? (
+          <div className="container">
             {movies.map((movie) => (
               <MovieCard key={movie.imdbID} movie={movie} />
-        ))}
-        </div>
+            ))}
+          </div>
         ) : (
           <h2>No movies found</h2>
         )}
-
-
-
-      </div> */}
+      </div>
     </div>
   );
 }
