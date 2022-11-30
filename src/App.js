@@ -105,32 +105,35 @@ function App() {
       {/* create delete own user button that deletes does another password check and deletes user */}
 
       {/* create a button to add a movie to the database */}
+      {user ? (
+        <>
+          <h1>My Movies App</h1>
 
-      <h1>My Movies App</h1>
-
-      <div>
-        <input
-          type="text"
-          placeholder="Search for a movie"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button type="button" onClick={() => searchMovies(searchTerm)}>
-          Search
-        </button>
-      </div>
-
-      <div className="movies">
-        {movies?.length > 0 ? (
-          <div className="container">
-            {movies.map((movie) => (
-              <MovieCard key={movie.imdbID} movie={movie} />
-            ))}
+          <div>
+            <input
+              type="text"
+              placeholder="Search for a movie"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button type="button" onClick={() => searchMovies(searchTerm)}>
+              Search
+            </button>
           </div>
-        ) : (
-          <h2>No movies found</h2>
-        )}
-      </div>
+
+          <div className="movies">
+            {movies?.length > 0 ? (
+              <div className="container">
+                {movies.map((movie) => (
+                  <MovieCard key={movie.imdbID} movie={movie} />
+                ))}
+              </div>
+            ) : (
+              <h2>No movies found</h2>
+            )}
+          </div>
+        </>
+      ) : null}
     </div>
   );
 }
