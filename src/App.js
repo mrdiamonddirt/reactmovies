@@ -19,6 +19,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [register, setRegister] = useState(false);
   const [updatingUser, setUpdatingUser] = useState(false);
+  const [gettingAllUsers, setGettingAllUsers] = useState(false);
 
   const [user, setUser] = useState();
   const [users, setUsers] = useState();
@@ -72,6 +73,9 @@ function App() {
               <DeleteUser user={user} />
             </>
           ) : null}
+          <button onClick={() => setGettingAllUsers(!gettingAllUsers)}>
+            Show / Hide All users Btn
+          </button>
           {/* <UpdateUser user={user} /> */}
         </>
       ) : (
@@ -88,7 +92,9 @@ function App() {
         Register
       </button>
       {register ? <Register setter={setUser} /> : null}
-      <AllUsers setter={setUsers} />
+      {gettingAllUsers ? <AllUsers setter={setUsers} /> : null}
+
+      {/* <AllUsers setter={setUsers} /> */}
 
       {/* conditional renders when logged in */}
       {/* if specific user return all users from database and display in table */}
