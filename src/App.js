@@ -57,6 +57,11 @@ function App() {
     }
   };
 
+  const handleLogout = () => {
+    writeCookie("jwt_token", "", -1);
+    setUser(null);
+  };
+
   useEffect(() => {
     let cookie = getCookie("jwt_token");
     if (cookie !== false) {
@@ -75,33 +80,45 @@ function App() {
       {user ? (
         <>
           <h1>Welcome {user}</h1>
-          <button onClick={handleUpdateBtn}>Update User Info</button>
+          <button className={"buttonClass"} onClick={handleUpdateBtn}>
+            Update User Info
+          </button>
           {updatingUser ? (
             <>
+              <p>Update User Info Here:</p>
               <UpdateUser user={user} />
               <DeleteUser user={user} />
             </>
           ) : null}
-          <button onClick={() => setGettingAllUsers(!gettingAllUsers)}>
+          <button
+            className={"buttonClass"}
+            onClick={() => setGettingAllUsers(!gettingAllUsers)}
+          >
             Show / Hide All users Btn
+          </button>
+          <button className={"buttonClass"} onClick={handleLogout}>
+            Logout
           </button>
           {/* <UpdateUser user={user} /> */}
         </>
       ) : (
         <>
           <h1>Please Login</h1>
-          <button onClick={handleLoggingInBtn}>Login</button>
+          <button className={"buttonClass"} onClick={handleLoggingInBtn}>
+            Login
+          </button>
           {loggingIn ? <Login setter={setUser} /> : null}
+          <button
+            className={"buttonClass"}
+            onClick={() => {
+              handleRegisterBtn();
+            }}
+          >
+            Register
+          </button>
+          {register ? <Register setter={setUser} /> : null}
         </>
       )}
-      <button
-        onClick={() => {
-          handleRegisterBtn();
-        }}
-      >
-        Register
-      </button>
-      {register ? <Register setter={setUser} /> : null}
       {gettingAllUsers ? <AllUsers setter={setUsers} /> : null}
 
       {/* <AllUsers setter={setUsers} /> */}
@@ -126,7 +143,11 @@ function App() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <button type="button" onClick={() => searchMovies(searchTerm)}>
+            <button
+              className={"buttonClass"}
+              type="button"
+              onClick={() => searchMovies(searchTerm)}
+            >
               Search
             </button>
           </div>

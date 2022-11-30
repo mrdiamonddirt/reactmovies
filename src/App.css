@@ -2,9 +2,6 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   background-color: #282c34;
   color: white;
   font-size: calc(10px + 2vmin);
@@ -13,6 +10,17 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.buttonClass {
+  background-color: #282c34;
+  color: white;
+  font-size: calc(10px + 2vmin);
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
