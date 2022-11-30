@@ -18,6 +18,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
   const [register, setRegister] = useState(false);
+  const [updatingUser, setUpdatingUser] = useState(false);
 
   const [user, setUser] = useState();
   const [users, setUsers] = useState();
@@ -35,6 +36,14 @@ function App() {
       setRegister(false);
     } else {
       setRegister(true);
+    }
+  };
+
+  const handleUpdateBtn = () => {
+    if (updatingUser) {
+      setUpdatingUser(false);
+    } else {
+      setUpdatingUser(true);
     }
   };
 
@@ -56,8 +65,14 @@ function App() {
       {user ? (
         <>
           <h1>Welcome {user}</h1>
-          <UpdateUser user={user} />
-          <DeleteUser user={user} />
+          <button onClick={handleUpdateBtn}>Update User Info</button>
+          {updatingUser ? (
+            <>
+              <UpdateUser user={user} />
+              <DeleteUser user={user} />
+            </>
+          ) : null}
+          {/* <UpdateUser user={user} /> */}
         </>
       ) : (
         <>
