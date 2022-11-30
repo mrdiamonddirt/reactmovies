@@ -23,6 +23,20 @@
   margin-right: auto;
 }
 
+.AllUsersContainer {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: slategray;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.UserContainer {
+  background-color: #61dafb;
+  border: 1px solid black;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
