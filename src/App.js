@@ -117,6 +117,15 @@ function App() {
             Register
           </button>
           {register ? <Register setter={setUser} /> : null}
+          <p>
+            Welcome to my react movies app, feel free to Register for an
+            Account,
+            <br />
+            And then Login to see the rest of the site.
+            <br />
+            The site is under constant development, and only servers as a
+            portfolio/project for me to show off my skills.
+          </p>
         </>
       )}
       {gettingAllUsers ? <AllUsers setter={setUsers} /> : null}
