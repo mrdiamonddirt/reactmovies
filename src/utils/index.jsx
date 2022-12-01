@@ -2,17 +2,20 @@ import { writeCookie } from "../common";
 
 export const loginUser = async (name, email, password, setter) => {
   try {
-    const response = await fetch("http://localhost:5001/loginUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_REST_API_URL}loginUser`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+        }),
+      }
+    );
 
     const data = await response.json();
     console.log(data);
@@ -29,13 +32,16 @@ export const loginUser = async (name, email, password, setter) => {
 
 export const findUser = async (cookie) => {
   try {
-    const response = await fetch("http://localhost:5001/loginUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${cookie}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_REST_API_URL}loginUser`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${cookie}`,
+        },
+      }
+    );
 
     const data = await response.json();
     console.log(data);
@@ -47,17 +53,20 @@ export const findUser = async (cookie) => {
 // add a new user to the database function
 export const registerUser = async (name, email, password, setter) => {
   try {
-    const response = await fetch("http://localhost:5001/addUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_REST_API_URL}addUser`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
     setter(data.name);
@@ -69,12 +78,15 @@ export const registerUser = async (name, email, password, setter) => {
 // get all users from the database
 export const getAllUsers = async (setter) => {
   try {
-    const response = await fetch("http://localhost:5001/getUsers", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_REST_API_URL}getUsers`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await response.json();
     console.log(data);
     setter(data.data.users);
@@ -85,17 +97,20 @@ export const getAllUsers = async (setter) => {
 
 export const Updateuser = async (user, key, value) => {
   try {
-    const response = await fetch("http://localhost:5001/updateUser", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: user,
-        key: key,
-        value: value,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_REST_API_URL}UpdateUser`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: user,
+          key: key,
+          value: value,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
     return data;
@@ -106,15 +121,18 @@ export const Updateuser = async (user, key, value) => {
 
 export const deleteUser = async (user) => {
   try {
-    const response = await fetch("http://localhost:5001/deleteUser", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: user,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_REST_API_URL}deleteUser`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: user,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
     return data;
