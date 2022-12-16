@@ -11,25 +11,10 @@ import AllUsers from "./components/AllUsers";
 import { writeCookie } from "./common";
 import { getCookie } from "./common";
 import { findUser } from "./utils";
-const { io } = require("socket.io-client");
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-// where is the server which socket you want to connect to hosted?
 // const socket = io();
-const socket = io("http://localhost:3005", {
-    withCredentials: false,
-    extraHeaders: {
-        "my-custom-header": "abcd",
-    },
-});
-// const socket = io();
-
-console.log("connected:", socket.connected);
-// connect to the socket io socket
-socket.on("connect", () => {
-    console.log("connected to socket io");
-});
 
 function App() {
     const [searchTerm, setSearchTerm] = useState("");
